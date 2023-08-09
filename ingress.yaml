@@ -7,10 +7,17 @@ spec:
     - host: example.com
       http:
         paths:
-          - path: "/"
+          - path: "/app1"
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world-service
+                port:
+                  number: 5678
+          - path: "/app2"
             pathType: Prefix
             backend:
               service:
                 name: webapp-internal-service
                 port:
-                  number: 80
+                  number: 3000
