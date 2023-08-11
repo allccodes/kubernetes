@@ -1,6 +1,0 @@
-https://dotnetninja.net/2021/06/adding-ingress-to-your-multi-node-kind-cluster/
-
-https://www.youtube.com/watch?v=1lx91nhzNe0
-
-https://www.youtube.com/watch?v=s_o8dwzRlu4
-https://www.youtube.com/watch?v=80Ew_fsV4rM

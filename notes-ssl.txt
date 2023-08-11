@@ -1,0 +1,5 @@
+
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=example.com" -days 365
+kubectl.exe create secret tls example-com-tls --cert=tls.crt --key=tls.key
+kubectl.exe delete secret example-com-tls (if we need to)
+kubectl get secret -o yaml

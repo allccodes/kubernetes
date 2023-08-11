@@ -1,0 +1,68 @@
+https://dotnetninja.net/2021/06/adding-ingress-to-your-multi-node-kind-cluster/
+
+https://www.youtube.com/watch?v=1lx91nhzNe0
+
+https://www.youtube.com/watch?v=s_o8dwzRlu4
+https://www.youtube.com/watch?v=80Ew_fsV4rM
+
+
+https://killer.sh/cks
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml  
+
+
+kubectl.exe get pode -o wide
+kubectl.exe get deployment webapp-deployment -o yaml (and we get the state of deployment that resides in etcd)
+kubectl.exe get deployment webapp-deployment -o yaml > webapp-deployment-result.yaml
+kubectl.exe get replicaset
+
+kubectl.exe describe pods webapp-deployment-7fd8d764b-zcqpx
+kubectl.exe describe service hello1-service
+
+kubectl.exe exec -it webapp-deployment-7fd8d764b-zcqpx -- /bin/sh
+kubectl exec logs webapp-deployment-7fd8d764b-zcqpx
+
+kubectl.exe apply -f hello-world.deployment.yaml
+kubectl.exe delete deployment webapp-deployment
+
+
+# Namespaces
+
+
+kube-system (not for our use. Are system processos, master and managing processs)
+kube-public (plubic and acessible data, acessible without authentication)
+kub-node-lease (holds information about hard-bits of nodes)
+default (we should use this name space)
+
+
+kubectl create namespace mynamespace (or we can create .yaml file with the namespace)
+
+Why to use namespace?
+
+Organization!!!
+Resources grouped logicaly by namespaces
+
+When ?
+
+Ex Namespaces: (Database, Monitoring, Elistick-Stack, Nginx-Ingress)
+Diferent teams
+Diferent Staging and Development
+Resource sharing: Ex. Nginx-ingress can be shared between namespaces
+Acess and resource limits on namespaces: one team can only acess his namespace; limit resources, cpu, ram, storage)
+
+Restrictions:
+
+Each namespace must define his own ConfigMap, Secret
+However we can share services: 
+Ex: In ConfigMap in the data field we put something like:
+data:
+    db_url: <service-name>.<namespace> 
+
+
+note: Some components can't be isolated inside namespace, thy "live" globally in the cluster
+- node, volume
+kubectl api-resources --namespaced=fase
+
+nota: brew install kubctx do change de default namespace
+kubens 
+kubens mynamespace
