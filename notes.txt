@@ -19,6 +19,9 @@ kubectl.exe get replicaset
 kubectl.exe describe pods webapp-deployment-7fd8d764b-zcqpx
 kubectl.exe describe service hello1-service
 
+kubectl.exe describe Ingress -n testes
+
+
 kubectl.exe exec -it webapp-deployment-7fd8d764b-zcqpx -- /bin/sh
 kubectl exec logs webapp-deployment-7fd8d764b-zcqpx
 

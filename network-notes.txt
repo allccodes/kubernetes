@@ -1,0 +1,27 @@
+# ClusterIP
+
+Ports are acessible inside the pod
+Ex: Pod1 (3000) -> Pod1 (9000)
+The pod gest an IP from the range that is addressed to the node
+
+
+# Headless
+
+Client wants to talk with one specific pod directly
+Use case: statefull applications, like databases (pode replicas are not identical, each one has its individual state: ex: master-slave replica)
+How client knows the IP of each pod?
+- By dnslookup (Set the clusterIP configuration to None returns the pod IP instead the clusterIP has normaly does)
+    clusterIP: None
+
+
+# NodePort
+
+Creates a service that is accessible on a static port on each worker node.
+Not very safe because we are opening a port directly in each worder node.
+Nota that we still have the Port of the service itself (NodePort -> Port) And the NodePort must match the port where the aplication container inside
+the port is listening
+
+
+# LoadBalancer
+
+A service became accessible externaly throught a cloud provider LoadBalancer (the entry point is the load LoadBalancer)
