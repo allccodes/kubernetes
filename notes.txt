@@ -69,3 +69,20 @@ kubectl api-resources --namespaced=fase
 nota: brew install kubctx do change de default namespace
 kubens 
 kubens mynamespace
+
+
+
+# Connect to specific node
+kubect get nodes -A
+docker exec -it mycluster-worker2 sh
+
+# How to see docker-images that are loaded?
+
+docker exec -it mycluster-worker2 sh
+crictl images
+
+# ????
+
+kind export logs
+
+kubectl scale deployment nginx-deployment 
