@@ -3,8 +3,10 @@ name: mycluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-- role: worker
   extraPortMappings:
-  - containerPort: 30000 
-    hostPort: 8080
+  - containerPort: 30000
+    hostPort: 8080 # macbook
+    listenAddress: "0.0.0.0"
+    protocol: TCP
+- role: worker
 - role: worker
